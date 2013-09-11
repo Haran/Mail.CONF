@@ -1,3 +1,7 @@
+# Habrahabr
+
+Repository created for article <http://habrahabr.ru/post/193220/>
+
 # Mail server configuration
 
 This is a mail server configuration files for:
@@ -17,3 +21,5 @@ To get things working don't forget to:
 
 * Install all necessary software
 * Change passwords for mysql in all necessary config files
+* Register services
+* Perform tests

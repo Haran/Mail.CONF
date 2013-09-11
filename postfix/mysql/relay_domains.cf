@@ -1,0 +1,8 @@
+# -------------
+# relay_domains
+# -------------
+hosts = localhost
+user = postfix
+password = mypassword
+dbname = postfix
+query = SELECT domain FROM domain WHERE domain='%s' and backupmx = '1'

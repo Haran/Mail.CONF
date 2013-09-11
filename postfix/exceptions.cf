@@ -1,0 +1,5 @@
+# This specifies the list of subnets and hosts that are
+# excluded from smtpd_client_*_count/rate_limit restrictions.
+#
+127.0.0.0/8
+192.168.8.0/24

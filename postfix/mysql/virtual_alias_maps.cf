@@ -1,0 +1,8 @@
+# ------------------
+# virtual_alias_maps
+# ------------------
+hosts = localhost
+user = postfix
+password = mypassword
+dbname = postfix
+query = SELECT goto FROM alias WHERE address='%s' AND active = '1'

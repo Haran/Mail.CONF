@@ -1,0 +1,62 @@
+# These values can be overridden by editing ~/.spamassassin/user_prefs.cf 
+# (see spamassassin(1) for details)
+
+# These should be safe assumptions and allow for simple visual sifting
+# without risking lost emails.
+
+required_hits 5
+report_safe 0
+rewrite_header Subject ***SPAM***
+
+#
+# CUSTOM
+#
+score FORGED_MUA_OUTLOOK 2.199 2.199 0.963 1.116
+score FH_DATE_PAST_20XX 0.0
+score DOS_OE_TO_MX_IMAGE 0.0
+score DOS_OE_TO_MX 0.0
+score DOS_OUTLOOK_TO_MX 0.0
+score TO_NO_BRKTS_DIRECT 0.0
+score HELO_LOCALHOST 0.0
+score FSL_RU_URL 0.0
+score FROM_MISSP_EH_MATCH 1.0
+score TVD_RCVD_SINGLE 1.0
+score TO_IN_SUBJ 1.0
+
+#
+# BAYES
+#
+use_bayes 1
+bayes_auto_learn 1
+use_bayes_rules 1
+bayes_path /etc/mail/spamassassin/bayes
+bayes_file_mode 0666
+bayes_learn_to_journal 1
+bayes_min_ham_num 50
+bayes_min_spam_num 50
+
+#
+# TUNING
+#
+score SUBJ_FULL_OF_8BITS 0.00
+score HTML_COMMENT_8BITS 0.01
+score HEADER_8BITS 0.00
+score TO_NO_USER 0.01
+score FORGED_MUA_OUTLOOK 0.5
+score X_AUTH_WARNING 0.01
+score SUBJ_HAS_UNIQ_ID 9.99
+score HTTP_USERNAME_USED 9.99
+score FORGED_YAHOO_RCVD 9.99
+score FORGED_JUNO_RCVD 16
+score UNWANTED_LANGUAGE_BODY 1.02
+score MLM 5.55
+score RCVD_NUMERIC_HELO 4.95
+
+#
+# WHITE/BLACK LISTS
+#
+whitelist_from root@localhost
+whitelist_from *@example.com
+blacklist_from *@outblaze.com
+auto_whitelist_path /etc/mail/spamassassin/auto-whitelist
+auto_whitelist_file_mode 0666

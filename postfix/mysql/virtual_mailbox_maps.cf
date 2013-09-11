@@ -1,0 +1,8 @@
+# --------------------
+# virtual_mailbox_maps
+# --------------------
+hosts = localhost
+user = postfix
+password = mypassword
+dbname = postfix
+query = SELECT maildir FROM mailbox WHERE username='%s' AND active = '1'
