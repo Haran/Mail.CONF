@@ -69,7 +69,7 @@ amavisfeed unix -       -       n       -       4       lmtp
   -o smtpd_data_restrictions=reject_unauth_pipelining
   -o smtpd_end_of_data_restrictions=
   -o smtpd_restriction_classes=
-  -o mynetworks=127.0.0.0/8,62.205.205.18/32,188.64.176.0/21,192.168.0.0/16
+  -o mynetworks=127.0.0.0/8,192.168.0.0/16
   -o smtpd_error_sleep_time=0
   -o smtpd_soft_error_limit=1001
   -o smtpd_hard_error_limit=1000
