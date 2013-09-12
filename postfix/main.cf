@@ -663,7 +663,7 @@ inet_protocols = ipv4
 # RESTRICTIONS
 #
 # Uncomment reject_rbl_client if necessary
-# More information at: http://help.ubuntu.ru/wiki/фильтрация_спама_на_уровне_smtp_протокола
+# More information at: http://ow.ly/oNF2J
 # ============================================================
 smtpd_data_restrictions = permit_mynetworks,
                           permit_sasl_authenticated,
