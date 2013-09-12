@@ -23,7 +23,6 @@
 
 # Mail :: SMTP, Submission
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 25 -j ACCEPT
--A INPUT -m state --state NEW -m tcp -p tcp --dport 465 -j ACCEPT
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 587 -j ACCEPT
 
 # Mail :: Pop3, Pop3s
