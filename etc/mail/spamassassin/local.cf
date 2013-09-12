@@ -24,18 +24,6 @@ score TVD_RCVD_SINGLE 1.0
 score TO_IN_SUBJ 1.0
 
 #
-# BAYES
-#
-use_bayes 1
-bayes_auto_learn 1
-use_bayes_rules 1
-bayes_path /etc/mail/spamassassin/bayes
-bayes_file_mode 0666
-bayes_learn_to_journal 1
-bayes_min_ham_num 50
-bayes_min_spam_num 50
-
-#
 # TUNING
 #
 score SUBJ_FULL_OF_8BITS 0.00
