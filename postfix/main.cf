@@ -661,6 +661,9 @@ inet_protocols = ipv4
 
 # ============================================================
 # RESTRICTIONS
+#
+# Uncomment reject_rbl_client if necessary
+# More information at: http://help.ubuntu.ru/wiki/фильтрация_спама_на_уровне_smtp_протокола
 # ============================================================
 smtpd_data_restrictions = permit_mynetworks,
                           permit_sasl_authenticated,
@@ -672,15 +675,18 @@ smtpd_relay_restrictions = permit_mynetworks,
                            permit_sasl_authenticated,
                            defer_unauth_destination
 
-smtpd_recipient_restrictions = permit_mynetworks,
+smtpd_recipient_restrictions = reject_non_fqdn_recipient,
+                               reject_non_fqdn_sender,
+                               reject_unknown_recipient_domain,
+                               permit_mynetworks,
                                permit_sasl_authenticated,
                                reject_unauth_destination,
                                check_policy_service unix:/var/spool/postfix/postgrey/socket,
-                               reject_non_fqdn_recipient,
+                               reject_invalid_hostname,
                                reject_unverified_recipient,
-                               reject_rbl_client zen.spamhaus.org,
-                               reject_rbl_client bl.spamcop.net,
-                               reject_rbl_client dnsbl.sorbs.net,
+                               #reject_rbl_client zen.spamhaus.org,
+                               #reject_rbl_client bl.spamcop.net,
+                               #reject_rbl_client dnsbl.sorbs.net,
                                permit
 
 # ============================================================
