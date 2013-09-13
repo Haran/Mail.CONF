@@ -707,7 +707,6 @@ smtpd_recipient_restrictions = reject_non_fqdn_recipient,
 # SASL
 # ============================================================
 smtpd_sasl_auth_enable = yes
-smtpd_sasl_exceptions_networks = $mynetworks
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
