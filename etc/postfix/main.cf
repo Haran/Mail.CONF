@@ -681,7 +681,6 @@ smtpd_helo_restrictions = permit_mynetworks,
                           permit_sasl_authenticated,
                           reject_non_fqdn_helo_hostname,
                           reject_invalid_helo_hostname,
-                          permit
 
 smtpd_data_restrictions = permit_mynetworks,
                           permit_sasl_authenticated,
@@ -693,7 +692,6 @@ smtpd_sender_restrictions = permit_mynetworks,
                             permit_sasl_authenticated,
                             reject_non_fqdn_sender,
                             reject_unknown_sender_domain,
-                            permit
 
 smtpd_recipient_restrictions = reject_non_fqdn_recipient,
                                reject_unknown_recipient_domain,
@@ -702,11 +700,10 @@ smtpd_recipient_restrictions = reject_non_fqdn_recipient,
                                permit_sasl_authenticated,
                                reject_unauth_destination,
                                check_policy_service unix:/var/spool/postfix/postgrey/socket,
-                               reject_invalid_hostname,
                                #reject_rbl_client zen.spamhaus.org,
                                #reject_rbl_client bl.spamcop.net,
                                #reject_rbl_client dnsbl.sorbs.net,
-                               permit
+                               reject_invalid_hostname
 
 # ============================================================
 # SASL
