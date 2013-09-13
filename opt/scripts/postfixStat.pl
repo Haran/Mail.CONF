@@ -32,7 +32,7 @@ while (defined($line = <STDIN>)) {
 			event($time, "rejected");
 		}
 		elsif ($text =~ /status=sent/) {
-			if (($text !~ /\brelay=[^\s\[]*\[127\.0\.0\.1\]/) and ($text !~ /spamtrap\@dautkom.lv/)) {
+			if (($text !~ /\brelay=[^\s\[]*\[127\.0\.0\.1\]/) and ($text !~ /spamtrap\@.+/)) {
 				event($time, "sent");
 			}
 		}
