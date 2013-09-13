@@ -4,8 +4,14 @@
 # In particular, "trusted" SMTP clients are allowed to relay mail
 # through Postfix.
 #
-# Be sure to add your public ip address block if needed.
-#
+# ----------------------------------------------------------------
+# Using this is strictly NOT a best practice!
+# ----------------------------------------------------------------
+# If really necessary, be sure to add only REALLY trusted neworks 
+# or hosts. Actually, it's better to avoid using this option and
+# `permit_mynetworks` at all - let you users send mails only after
+# authentication.
+# ----------------------------------------------------------------
 192.168.0.0/16
 10.0.0.0/8
 127.0.0.0/8

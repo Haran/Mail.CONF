@@ -672,6 +672,11 @@ smtpd_delay_reject = yes
 smtpd_helo_required = yes
 disable_vrfy_command = yes
 
+# ************************************************************
+# WARNING
+# Use `permit_mynetworks` with extreme caution or better disable
+# it at all - let you users send mails only after authentication
+# ************************************************************
 smtpd_helo_restrictions = permit_mynetworks,
                           permit_sasl_authenticated,
                           reject_non_fqdn_helo_hostname,
