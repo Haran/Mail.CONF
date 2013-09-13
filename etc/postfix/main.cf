@@ -159,7 +159,7 @@ myorigin = $myhostname
 #mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
 #mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain,
 #	mail.$mydomain, www.$mydomain, ftp.$mydomain
-mydestination = $myhostname, localhost.$mydomain, localhost
+mydestination = localhost.$mydomain, localhost
 
 # REJECTING MAIL FOR UNKNOWN LOCAL USERS
 #
@@ -665,27 +665,42 @@ inet_protocols = ipv4
 # Uncomment reject_rbl_client if necessary
 # More information at: http://ow.ly/oNF2J
 # ============================================================
+smtpd_discard_ehlo_keywords = etrn, silent-discard
+smtpd_forbidden_commands = CONNECT GET POST
+broken_sasl_auth_clients = yes
+smtpd_delay_reject = yes
+smtpd_helo_required = yes
+disable_vrfy_command = yes
+
+smtpd_helo_restrictions = permit_mynetworks,
+                          permit_sasl_authenticated,
+                          reject_non_fqdn_helo_hostname,
+                          reject_invalid_helo_hostname,
+                          permit
+
 smtpd_data_restrictions = permit_mynetworks,
                           permit_sasl_authenticated,
                           reject_unauth_pipelining,
                           reject_multi_recipient_bounce,
                           permit
 
-smtpd_relay_restrictions = permit_mynetworks,
-                           permit_sasl_authenticated,
-                           defer_unauth_destination
+smtpd_sender_restrictions = permit_mynetworks,
+                            permit_sasl_authenticated,
+                            reject_non_fqdn_sender,
+                            reject_unknown_sender_domain,
+                            permit
 
 smtpd_recipient_restrictions = reject_non_fqdn_recipient,
-                               reject_non_fqdn_sender,
                                reject_unknown_recipient_domain,
+                               reject_multi_recipient_bounce,
                                permit_mynetworks,
                                permit_sasl_authenticated,
                                reject_unauth_destination,
                                check_policy_service unix:/var/spool/postfix/postgrey/socket,
                                reject_invalid_hostname,
-                               #reject_rbl_client zen.spamhaus.org,
-                               #reject_rbl_client bl.spamcop.net,
-                               #reject_rbl_client dnsbl.sorbs.net,
+                               reject_rbl_client zen.spamhaus.org,
+                               reject_rbl_client bl.spamcop.net,
+                               reject_rbl_client dnsbl.sorbs.net,
                                permit
 
 # ============================================================
@@ -696,15 +711,6 @@ smtpd_sasl_exceptions_networks = $mynetworks
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
-
-# ============================================================
-# RESTRICTIONS
-# ============================================================
-smtpd_discard_ehlo_keywords = etrn, silent-discard
-smtpd_forbidden_commands = CONNECT GET POST
-broken_sasl_auth_clients = yes
-smtpd_helo_required = yes
-disable_vrfy_command = yes
 
 # ============================================================
 # TLS
