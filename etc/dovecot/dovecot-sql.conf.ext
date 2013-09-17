@@ -3,3 +3,4 @@ connect = host=localhost dbname=postfix user=postfix password=mypassword
 default_pass_scheme = MD5-CRYPT
 user_query = SELECT '/data/vmail/%d/%n' as home, 'maildir:/data/vmail/%d/%n'as mail, 1000 AS uid, 1000 AS gid, concat('*:bytes=', quota) AS quota_rule FROM mailbox WHERE username = '%u' AND active = '1'
 password_query = SELECT username as user, password, '/data/vmail/%d/%n' as userdb_home, 'maildir:/data/vmail/%d/%n' as userdb_mail, 1000 as userdb_uid, 1000 as userdb_gid, concat('*:bytes=', quota) AS userdb_quota_rule FROM mailbox WHERE username = '%u' AND active = '1'
+iterate_query = SELECT username FROM mailbox
