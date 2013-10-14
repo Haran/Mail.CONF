@@ -729,11 +729,11 @@ tls_random_source = dev:/dev/urandom
 # ============================================================
 # MySQL mappings
 # ============================================================
-relay_domains = mysql:/etc/postfix/mysql/relay_domains.cf
-virtual_alias_maps = mysql:/etc/postfix/mysql/virtual_alias_maps.cf,
-                     mysql:/etc/postfix/mysql/virtual_alias_domain_maps.cf
-virtual_mailbox_domains = mysql:/etc/postfix/mysql/virtual_mailbox_domains.cf
-virtual_mailbox_maps = mysql:/etc/postfix/mysql/virtual_mailbox_maps.cf
+relay_domains = proxy:mysql:/etc/postfix/mysql/relay_domains.cf
+virtual_alias_maps = proxy:mysql:/etc/postfix/mysql/virtual_alias_maps.cf,
+                     proxy:mysql:/etc/postfix/mysql/virtual_alias_domain_maps.cf
+virtual_mailbox_domains = proxy:mysql:/etc/postfix/mysql/virtual_mailbox_domains.cf
+virtual_mailbox_maps = proxy:mysql:/etc/postfix/mysql/virtual_mailbox_maps.cf
 
 # ============================================================
 # VIRTUAL
