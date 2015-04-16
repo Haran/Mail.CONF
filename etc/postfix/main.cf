@@ -681,6 +681,7 @@ smtpd_helo_restrictions = permit_mynetworks,
                           permit_sasl_authenticated,
                           reject_non_fqdn_helo_hostname,
                           reject_invalid_helo_hostname,
+						  permit
 
 smtpd_data_restrictions = permit_mynetworks,
                           permit_sasl_authenticated,
@@ -692,18 +693,29 @@ smtpd_sender_restrictions = permit_mynetworks,
                             permit_sasl_authenticated,
                             reject_non_fqdn_sender,
                             reject_unknown_sender_domain,
+							permit
 
-smtpd_recipient_restrictions = reject_non_fqdn_recipient,
+smtpd_recipient_restrictions = permit_mynetworks,
+                               permit_sasl_authenticated,
+                               reject_non_fqdn_recipient,
                                reject_unknown_recipient_domain,
                                reject_multi_recipient_bounce,
-                               permit_mynetworks,
-                               permit_sasl_authenticated,
                                reject_unauth_destination,
                                check_policy_service unix:/var/spool/postfix/postgrey/socket,
+                               reject_invalid_hostname
                                #reject_rbl_client zen.spamhaus.org,
                                #reject_rbl_client bl.spamcop.net,
                                #reject_rbl_client dnsbl.sorbs.net,
-                               reject_invalid_hostname
+							   permit
+
+# ============================================================
+# ONLY for Postfix >= 2.10 
+# Required if smtpd_recipient_restrictions does not enforce relay policy
+# ============================================================
+smtpd_relay_restrictions = permit_mynetworks,
+                           permit_sasl_authenticated,
+                           reject_unauth_destination,
+                           permit
 
 # ============================================================
 # SASL
