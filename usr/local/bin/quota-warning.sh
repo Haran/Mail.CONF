@@ -1,9 +1,11 @@
 #!/bin/sh
 PERCENT=$1
 USER=$2
+NOW=$(date -R)
 cat << EOF | /usr/libexec/dovecot/dovecot-lda -d $USER -o "plugin/quota=maildir:User quota:noenforcing"
 MIME-Version: 1.0
 From: postmaster@domain.tld
+Date: $NOW
 Subject: Quota warning
 Content-Type: text/plain; charset=UTF-8;format=flowed
 Content-Transfer-Encoding: 8bit
